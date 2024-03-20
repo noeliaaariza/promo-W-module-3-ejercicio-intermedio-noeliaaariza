@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
-  const [selectValue, setSelectValue] = useState("all");
+  const [selectValue, setSelectValue] = useState("");
 
   const handleChangeSearch = (value) => {
     setSearchValue(value);
@@ -20,12 +20,15 @@ function App() {
   };
 
   const filteredCountries = data.filter((data) => {
-    return data.name.common.toLowerCase().includes(searchValue.toLowerCase());
+    return (
+      data.name.common.toLowerCase().includes(searchValue.toLowerCase()) &&
+      data.continents[0].toLowerCase().includes(selectValue.toLowerCase())
+    );
   });
 
-  const filteredContinents = data.filter((data) => {
-    return data.continents[0].toLowerCase().includes(selectValue.toLowerCase());
-  });
+  // const filteredContinents = data.filter((data) => {
+  //   return data.continents[0].toLowerCase().includes(selectValue.toLowerCase());
+  // });
 
   return (
     <>
