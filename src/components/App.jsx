@@ -1,11 +1,19 @@
 // Fichero src/components/App.jsx
 import "../scss/App.scss";
+import data from "../services/data.json";
+import Header from "./Header";
+import Filters from "./Filters";
+import AddCountry from "./AddCountry";
+import ListCountries from "./ListCountries";
 
 function App() {
   return (
-    <div>
-      <h1>Hola mundo</h1>
-    </div>
+    <>
+      <Header />
+      <Filters />
+      <AddCountry />
+      <ListCountries countryData={data} />
+    </>
   );
 }
 
